@@ -40,7 +40,7 @@
    - Displaying the result in the web interface
 
 
-## ---------------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------
 
 
 # **Deploying Large Language Models as APIs with Langchain and FastAPI**
@@ -87,7 +87,7 @@ Creating APIs is crucial for integrating LLM functionalities with various applic
 Now, it should be a clear understanding of how to deploy LLMs as APIs using Langchain and FastAPI. This knowledge will enable making these powerful models accessible for various applications in a production environment.
 
 
-## ---------------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------
 
 
 # **Enhancing Document Querying with a Retrieval-Augmented Generation (RAG) Pipeline Using LangChain and LLMs**
@@ -199,4 +199,4 @@ Now, it should be a clear understanding of how to deploy LLMs as APIs using Lang
   - Store vectors in a vector database.
   - Query the vector database to retrieve relevant results.
 
-## ---------------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------
