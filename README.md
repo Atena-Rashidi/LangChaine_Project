@@ -290,7 +290,6 @@ In an advanced RAG (Retrieval-Augmented Generation) pipeline, chains and retriev
 
 ## 5. Explanation of Retriever
 
-### Definition
 - **Retriever:** An interface that retrieves documents given an unstructured query.
 - **Functionality:** More general than a vector store; it does not need to store documents, only to return or retrieve them.
 
@@ -305,7 +304,6 @@ In an advanced RAG (Retrieval-Augmented Generation) pipeline, chains and retriev
 
 ## 6. Creating a Retriever Chain
 
-### Definition
 - **Retriever Chain:** Takes a user inquiry, passes it to the retriever to fetch relevant documents, and then to the LLM to generate a response.
 
 ### Implementation
