@@ -200,3 +200,92 @@ Now, it should be a clear understanding of how to deploy LLMs as APIs using Lang
   - Query the vector database to retrieve relevant results.
 
 ## ----------------------------------------------------------
+
+# Advanced RAG Pipeline Using Retriever and Chain Concepts in LangChain
+
+## Recap of Previous Tutorial
+- **Simple RAG Pipeline:**
+  - Data sources: PDFs, websites.
+  - Data loading using various techniques in LangChain.
+  - Transformation of data by breaking down PDFs into chunks.
+  - Conversion of chunks into vectors and storing them in a vector store.
+  - Querying the vector store to retrieve data.
+
+## Advanced Concepts
+
+### Limitations of Query Vectors
+- **Issue:** Query vectors may not retrieve complete results efficiently.
+- **Solution:** Use LLM (Large Language Models) for better results.
+
+### Importance of Prompts
+- **Role:** Prompts are crucial in the advanced RAG pipeline.
+- **Concepts:** Chain and Retriever in LangChain.
+
+## Detailed Explanation
+
+### Chain and Retriever
+- **LLM Models:** Use of open-source or OpenAI models.
+- **Customization:** Implementation of Chain and Retriever.
+
+### Stuff Document Chain
+- **Function:** Takes a list of documents, formats them into a prompt, and passes it to an LLM.
+- **Practical Steps:**
+  - Reading a PDF and loading documents.
+  - Using Recursive Character Text Splitter to convert documents into chunks.
+  - Storing chunks in a vector store using embeddings (OpenAI or AMA embeddings).
+
+## Combining Prompts with Chain and Retriever
+
+### Designing a Chat Prompt Template
+- **Example Prompt:** "Answer the following question based only on the provided context."
+- **LLM Models:** Using models like Llama 2 for generating responses.
+
+## Practical Implementation
+
+### Loading Llama 2 Model
+- **Steps:**
+  ```python
+  from langchain.chains.combine_documents import create_stuff_document_chain
+  ```
+
+### Creating a Chain
+- **Definition:** A chain refers to a sequence of calls to an LLM, tool, or data pre-processing step.
+- **Primary Method:** Using LCL (LangChain Language).
+
+### Functions in Chain
+- **Create Stuff Document Chain:** Takes documents from the vector store, formats them into a prompt, and sends them to the LLM.
+- **Create SQL Query Chain:** Useful for working with SQL databases for natural language queries.
+
+## Explanation of Retriever
+
+### Definition
+- **Retriever:** An interface that retrieves documents given an unstructured query.
+- **Functionality:** More general than a vector store; it does not need to store documents, only to return or retrieve them.
+
+### Implementation
+- **Code:**
+  ```python
+  retriever = db.as_retriever()
+  ```
+
+### Combining Retriever and Document Chain
+- **Process:** The retriever fetches relevant documents from the vector store, which are then passed to the LLM via the document chain to generate responses.
+
+## Creating a Retriever Chain
+
+### Definition
+- **Retriever Chain:** Takes a user inquiry, passes it to the retriever to fetch relevant documents, and then to the LLM to generate a response.
+
+### Implementation
+- **Code:**
+  ```python
+  from langchain.chains import create_retrieval_chain
+
+  retrieval_chain = create_retrieval_chain(retriever=retriever, document_chain=document_chain)
+  response = retrieval_chain.invoke(input="Your query here")
+  ```
+
+### Example Use Case
+- **Combining Retriever and Document Chain:** Handling user inquiries and generating responses.
+
+## ----------------------------------------------------------
