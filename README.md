@@ -203,7 +203,39 @@ Now, it should be a clear understanding of how to deploy LLMs as APIs using Lang
 
 # Advanced RAG Pipeline Using Retriever and Chain Concepts in LangChain
 
-## Recap of Previous Tutorial
+LangChain provides powerful tools for building sophisticated data processing and retrieval systems. Two key components in LangChain are **chains** and **retrievers**. This document explains their definitions, purposes, functionalities, and how they work together.
+
+## Chain
+A chain in LangChain refers to a sequence of operations or calls that can include interactions with an LLM (Large Language Model), tools, or data pre-processing steps. Chains automate and streamline processes that involve multiple steps, such as data retrieval, transformation, and querying.
+- **Modularity:** Break down complex tasks into smaller, manageable steps.
+- **Reusability:** Reuse chains across different projects or parts of your application.
+- **Flexibility:** Customize chains to fit specific workflows, making them adaptable to various use cases.
+
+### Example Functions
+- **Create Stuff Document Chain:** Takes a list of documents, formats them into a prompt, and passes it to an LLM.
+- **Create SQL Query Chain:** Generates SQL queries from natural language inputs.
+
+## Retriever
+A retriever in LangChain is an interface designed to fetch documents or data given an unstructured query. It acts as a bridge between the query and the data source, ensuring relevant information is retrieved efficiently. Retrievers handle the initial step of fetching data in response to a query, which can then be processed further by chains or other components.
+- **Generalization:** More general than vector stores; they don't need to store documents but only to retrieve them.
+- **Efficiency:** Optimize the process of fetching relevant documents from a data source.
+- **Integration:** Work with various back-end data stores, including vector stores, to provide the necessary data for further processing.
+
+### Functionality
+- **Vector Store Integration:** Use vector stores as their backbone to perform similarity searches and fetch relevant documents.
+- **Query Handling:** Process unstructured queries and return the most relevant documents based on the query.
+
+## Combining Chains and Retrievers
+
+In an advanced RAG (Retrieval-Augmented Generation) pipeline, chains and retrievers work together to provide a seamless data processing and retrieval experience:
+
+1. **User Inquiry:** The user submits a query.
+2. **Retriever:** The retriever fetches relevant documents from the data source.
+3. **Chain:** The chain processes these documents, formats them into a prompt, and sends them to an LLM.
+4. **LLM Response:** The LLM generates a response based on the prompt and the retrieved documents.
+
+
+## 1. Recap of Previous Tutorial
 - **Simple RAG Pipeline:**
   - Data sources: PDFs, websites.
   - Data loading using various techniques in LangChain.
@@ -211,7 +243,7 @@ Now, it should be a clear understanding of how to deploy LLMs as APIs using Lang
   - Conversion of chunks into vectors and storing them in a vector store.
   - Querying the vector store to retrieve data.
 
-## Advanced Concepts
+## 2. Advanced Concepts
 
 ### Limitations of Query Vectors
 - **Issue:** Query vectors may not retrieve complete results efficiently.
@@ -234,13 +266,13 @@ Now, it should be a clear understanding of how to deploy LLMs as APIs using Lang
   - Using Recursive Character Text Splitter to convert documents into chunks.
   - Storing chunks in a vector store using embeddings (OpenAI or AMA embeddings).
 
-## Combining Prompts with Chain and Retriever
+## 3. Combining Prompts with Chain and Retriever
 
 ### Designing a Chat Prompt Template
 - **Example Prompt:** "Answer the following question based only on the provided context."
 - **LLM Models:** Using models like Llama 2 for generating responses.
 
-## Practical Implementation
+## 4. Practical Implementation
 
 ### Loading Llama 2 Model
 - **Steps:**
@@ -256,7 +288,7 @@ Now, it should be a clear understanding of how to deploy LLMs as APIs using Lang
 - **Create Stuff Document Chain:** Takes documents from the vector store, formats them into a prompt, and sends them to the LLM.
 - **Create SQL Query Chain:** Useful for working with SQL databases for natural language queries.
 
-## Explanation of Retriever
+## 5. Explanation of Retriever
 
 ### Definition
 - **Retriever:** An interface that retrieves documents given an unstructured query.
@@ -271,7 +303,7 @@ Now, it should be a clear understanding of how to deploy LLMs as APIs using Lang
 ### Combining Retriever and Document Chain
 - **Process:** The retriever fetches relevant documents from the vector store, which are then passed to the LLM via the document chain to generate responses.
 
-## Creating a Retriever Chain
+## 6. Creating a Retriever Chain
 
 ### Definition
 - **Retriever Chain:** Takes a user inquiry, passes it to the retriever to fetch relevant documents, and then to the LLM to generate a response.
